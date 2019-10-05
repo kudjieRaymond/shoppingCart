@@ -9,9 +9,11 @@
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {
+    "@babel/polyfill": "^7.4.4",
     "core-js": "^2.6.5",
     "firebase": "^7.1.0",
-    "vue": "^2.6.10"
+    "vue": "^2.6.10",
+    "vuetify": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.11.0",
@@ -24,6 +26,7 @@
     "babel-jest": "^23.6.0",
     "eslint": "^5.16.0",
     "eslint-plugin-vue": "^5.0.0",
+    "vue-cli-plugin-vuetify": "^0.6.3",
     "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
@@ -50,6 +53,10 @@
       }
     ]
   },
+  "prettier": {
+    "singleQuote": true,
+    "tabWidth": 2
+  },
   "postcss": {
     "plugins": {
       "autoprefixer": {}
@@ -57,6 +64,7 @@
   },
   "browserslist": [
     "> 1%",
-    "last 2 versions"
+    "last 2 versions",
+    "not ie <= 10"
   ]
 }
