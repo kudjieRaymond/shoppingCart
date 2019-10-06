@@ -1,21 +1,20 @@
 <template>
-	<v-container grid-list-lg>
-		<v-layout row wrap>
-			<v-flex  xs12 sm6 md4 lg4>
-				<product-item v-for="prod in products" :item="prod" :key="prod.id"></product-item>
-			</v-flex>
-		</v-layout>
-
-	</v-container>
+  <v-container grid-list-lg>
+    <v-layout row wrap>
+      <product-item v-for="prod in products" :item="prod" :key="prod.id"></product-item>
+    </v-layout>
+  </v-container>
 </template>
 <script>
-import ProductItem from '@/components/ProductItem'
+import ProductItem from '@/components/ProductItem';
+import { mapGetters } from 'vuex';
 export default {
-	components:{
-		ProductItem,
-	},
-	data(){
+  components: {
+    ProductItem
+  },
 
-	}
-}
+  computed: {
+    ...mapGetters('products', ['products'])
+  }
+};
 </script>

@@ -49,14 +49,13 @@ const auth = {
           //router.push({ name: 'homePage' });
         });
     },
-    userSignOut({ commit, getters }) {
+    userSignOut({ commit }) {
       firebase
         .auth()
         .signOut()
         .then(() => {
           commit('setUser', null);
           commit('setIsAuthenticated', false);
-          console.log(getters.isAuthenticated);
           //router.push({ name: 'homePage' });
         })
         .catch(() => {
