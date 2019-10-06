@@ -1,7 +1,7 @@
 import firebase from "firebase";
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+const config = {
 	apiKey: "AIzaSyCPUggHUDd5LfxT3rdNyusQneqgxht-FOM",
 	authDomain: "shopping-cart-ad2f4.firebaseapp.com",
 	databaseURL: "https://shopping-cart-ad2f4.firebaseio.com",
@@ -12,5 +12,5 @@ const firebaseConfig = {
 	measurementId: "G-L2GXZ9LLDL"
 };
 // Initialize Firebase
-firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+firebase.initializeApp(config);
+//firebase.analytics();
