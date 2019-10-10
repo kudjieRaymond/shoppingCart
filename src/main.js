@@ -5,6 +5,7 @@ import "@/firebase/";
 import vuetify from './plugins/vuetify';
 import router from './routes'
 import store from './store'
+import 'material-design-icons-iconfont/dist/material-design-icons.css';
 
 Vue.config.productionTip = false
 

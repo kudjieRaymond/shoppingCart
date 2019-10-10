@@ -20,12 +20,21 @@
   </v-flex>
 </template>
 <script>
+import  {mapActions} from 'vuex'
 export default {
   props: ['item'],
 
   //data() {},
   methods: {
-    addItem() {}
+		...mapActions(['updateCart'] ),
+    addItem(){
+			let order = {
+				item: Object.assign({}, this.item),
+				quantity: 1,
+				isAdd:true
+			}
+			this.updateCart(order)
+		}
   },
   filters: {
     shortDescription(value) {
