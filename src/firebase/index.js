@@ -14,3 +14,22 @@ const config = {
 // Initialize Firebase
 firebase.initializeApp(config);
 //firebase.analytics();
+
+export function firebaseListener(callback) {
+  firebase.auth().onAuthStateChanged(
+    function(user) {
+      if (user) {
+        // console.log("User log in success", user);
+        callback(true, user);
+      } else {
+        // console.log("User log in failed", user);
+        callback(false);
+      }
+    },
+    function(error) {
+      console.log(error);
+    }
+	);
+	
+ }
+

@@ -22,7 +22,7 @@
   </v-container>
 </template>
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 export default {
   computed: {
     ...mapGetters('products', ['products']),
@@ -38,7 +38,16 @@ export default {
     }
   },
   methods: {
-    addItem() {}
+		...mapActions(['updateCart']),
+    addItem() {
+			const order = {
+        item: Object.assign({}, this.item),
+        quantity: 1,
+        isAdd: true
+      };
+      // console.log(order);
+      this.updateCart(order);
+		}
   }
 };
 </script>
