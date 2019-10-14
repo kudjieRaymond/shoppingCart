@@ -26,10 +26,11 @@ export function firebaseListener(callback) {
         callback(false);
       }
     },
-    function(error) {
-      console.log(error);
-    }
+    // function(error) {
+    //   console.log(error);
+    // }
 	);
-	
- }
+}
+
+export const ref = firebase.database().ref();
 

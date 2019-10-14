@@ -3,7 +3,7 @@ import firebase from 'firebase';
 import router from '@/routes';
 
 const auth = {
-  namespaced: true,
+  //namespaced: true,
 
   state: {
     isAuthenticated: false,
@@ -22,32 +22,28 @@ const auth = {
       firebase
         .auth()
         .createUserWithEmailAndPassword(email, password)
-        .then(data => {
+        .then(() => {
           // commit('setUser', user);
           // commit('setIsAuthenticated', true);
           router.push({ name: 'homePage' });
         })
-        .catch(function(error) {
-					
-					
+        .catch(() =>{
           commit('setUser', null);
-					commit('setIsAuthenticated', false);
-					throw new Error('Credential incorrect');
-
+          commit('setIsAuthenticated', false);
+          throw new Error('Credential incorrect');
         });
     },
     userLogin(_, { email, password }) {
-			firebase
+      firebase
         .auth()
         .signInWithEmailAndPassword(email, password)
-        .then(data => {
-					router.push({ name: 'homePage' });
+        .then(() => {
+          router.push({ name: 'homePage' });
         })
-        .catch(err => {
-					//this.error = err.message;
-					throw new Error('Credential incorrect');
+        .catch(() => {
+          //this.error = err.message;
+          throw new Error('Credential incorrect');
         });
-      
     },
     userSignOut({ commit }) {
       firebase
@@ -56,24 +52,31 @@ const auth = {
         .then(() => {
           commit('setUser', null);
           commit('setIsAuthenticated', false);
-					//show message;
+          //show message;
         })
         .catch(() => {
           commit('setUser', null);
           commit('setIsAuthenticated', false);
-         
         });
     },
-    fetchUser({commit}, user) {
-			//console.table(user)
-			commit('setIsAuthenticated', user !== null);
-			user ? commit('setUser', user.email) : commit('setUser', null)
-        
-    
-		}
+    fetchUser({ commit }, user) {
+      //console.log(user !== null);
+      commit('setIsAuthenticated', user !== null);
+      if (user) {
+				let  {email, emailVerified, uid} = user
+        commit('setUser', {
+          email,
+          emailVerified,
+          uid
+        });
+      } else {
+        commit('setUser', null);
+      }
+    }
   },
   getters: {
     isAuthenticated(state) {
+			//console.log(state.isAuthenticated);
       return state.user !== null && state.user !== undefined;
     },
     currentUser(state) {

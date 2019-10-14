@@ -22,7 +22,8 @@ new Vue({
 function authStatusChange(loggedIn, user) 
 {
 	if(store){
-		store.dispatch('auth/fetchUser', user);
+		
+		store.dispatch('fetchUser', user);
 		// //store.dispatch('auth/authStatusChanged');
 		// if(user){
 		// 	//get shopppingCart

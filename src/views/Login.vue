@@ -58,7 +58,7 @@ export default {
 	methods:{
 		submit(){
 			if(this.$refs.form.validate()){
-				this.$store.dispatch('auth/userLogin', {
+				this.$store.dispatch('userLogin', {
 					email: this.email,
 					password: this.password
 				});

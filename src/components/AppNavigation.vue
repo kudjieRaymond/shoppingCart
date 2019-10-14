@@ -21,7 +21,7 @@
         <v-btn text to="/">{{appTitle}}</v-btn>
       </v-toolbar-title>
       <div class="flex-grow-1"></div>
-      <div v-if="!isLoggedIn" class="hidden-sm-and-down">
+      <div v-if="!isAuthenticated" class="hidden-sm-and-down">
         <v-btn depressed color=" light-green darken-2" to="/register">REGISTER</v-btn>
         <v-btn depressed outlined to="/login">SIGN IN</v-btn>
       </div>
@@ -56,17 +56,15 @@ export default {
     };
   },
   computed: {
-		...mapGetters(['auth/isAuthenticated', 'cartTotal', 'numItems']),
-		isLoggedIn(){
-			return this.isAuthenticated
-		},
+		...mapGetters(['isAuthenticated', 'cartTotal', 'numItems', 'currentUser']),
+		
 		userEmail() {
       return this.isAuthenticated ? this.currentUser.email : ''
     }
   },
   methods: {
     logout() {
-      this.$store.dispatch('auth/userSignOut');
+      this.$store.dispatch('userSignOut');
     }
   }
 };

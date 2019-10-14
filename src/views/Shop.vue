@@ -14,7 +14,7 @@ export default {
   },
 
   computed: {
-    ...mapGetters('products', ['products'])
+    ...mapGetters(['products'])
   }
 };
 </script>

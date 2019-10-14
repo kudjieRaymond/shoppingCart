@@ -1,3 +1,5 @@
+import { ref } from '../../firebase';
+
 const cart = {
   state: {
     itemList: []
@@ -30,6 +32,19 @@ const cart = {
     },
     removeCartItem({ commit }, item) {
       commit('removeCartItem', item);
+    },
+    saveShoppingCart(_, { uid, itemList }) {
+      return ref.child('cart/' + uid).set(itemList);
+    },
+    retrieveShoppingCart({ commit }, { uid, currentCart }) {
+      ref
+        .child('cart/' + uid)
+        .once('value')
+        .then(snapshot => {
+          if (snapshot.val() && (!currentCart || currentCart.length == 0)) {
+            commit('setCart', cart.val());
+          }
+        });
     }
   },
   getters: {
@@ -45,10 +60,10 @@ const cart = {
     },
     numItems(state, getters) {
       return getters.itemList.reduce((total, item) => {
-        return total += item.quantity;
+        return (total += item.quantity);
       }, 0);
     }
   }
 };
 
-export default cart
+export default cart;

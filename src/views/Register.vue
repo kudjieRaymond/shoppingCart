@@ -57,7 +57,7 @@ export default {
     };
   },
   methods: {
-		...mapActions('auth',['userRegister'] ),
+		...mapActions(['userRegister'] ),
     submit() {
       if (this.$refs.form.validate()) {
         this.userRegister({
