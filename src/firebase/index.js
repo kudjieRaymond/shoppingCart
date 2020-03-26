@@ -2,15 +2,16 @@ import firebase from "firebase";
 
 // Your web app's Firebase configuration
 const config = {
-	apiKey: "AIzaSyCPUggHUDd5LfxT3rdNyusQneqgxht-FOM",
-	authDomain: "shopping-cart-ad2f4.firebaseapp.com",
-	databaseURL: "https://shopping-cart-ad2f4.firebaseio.com",
-	projectId: "shopping-cart-ad2f4",
-	storageBucket: "",
-	messagingSenderId: "666656963862",
-	appId: "1:666656963862:web:f2a76918e9d6f0c2226437",
-	measurementId: "G-L2GXZ9LLDL"
+  apiKey: process.env.VUE_APP_FIREBASE_API_KEY,
+  authDomain: process.env.VUE_APP_AUTH_DOMAIN,
+  databaseURL: process.env.VUE_APP_DATABASE_URL,
+  projectId: process.env.VUE_APP_PROJECT_ID,
+  storageBucket: process.env.VUE_APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.VUE_APP_MESSAGING_SENDER_ID,
+  appId: process.env.VUE_APP_APP_ID,
+  measurementId: process.env.VUE__APP_MEASUREMENT_ID
 };
+
 // Initialize Firebase
 firebase.initializeApp(config);
 //firebase.analytics();
