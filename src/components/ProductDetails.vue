@@ -1,5 +1,8 @@
 <template>
   <v-container>
+		<div class="d-flex justify-center" v-if="isLoading">
+      <ring-loader :loading="isProductLoading" :height="loaderHeight" :color="loaderColor" :size="loaderSize"></ring-loader>
+    </div>
     <v-card>
       <div class="d-flex justify-center align-item-center">
 				<div class="">
@@ -23,9 +26,23 @@
 </template>
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import RingLoader from 'vue-spinner/src/RingLoader.vue';
+
 export default {
+	
+	components: {
+    RingLoader
+	},
+	data() {
+    return {
+      loaderColor: '#5cb85c',
+			loaderSize: '100px',
+			loaderHeight: '100px',
+      isLoading: true
+    };
+  },
   computed: {
-    ...mapGetters('products', ['products']),
+    ...mapGetters( ['isProductLoading','products']),
     item() {
       let id = this.$route.params.id;
       let product = {};

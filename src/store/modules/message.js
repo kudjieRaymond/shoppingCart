@@ -4,7 +4,7 @@ const message = {
   state: {
     messageGroup: {
       message: '',
-      messageColor: '',
+      messageColor: 'info',
       timeoutEvent: null
     }
   },

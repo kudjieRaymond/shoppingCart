@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Store.vue display a list of products 1`] = `
+<v-container grid-list-lg="">
+  <div class="d-flex justify-center">
+    <ring-loader-stub loading="true" color="#5cb85c" size="100px" margin="2px" radius="100%" height="100px"></ring-loader-stub>
+  </div>
+  <v-layout row="" wrap="">
+    <product-item-stub item="[object Object]"></product-item-stub>
+    <product-item-stub item="[object Object]"></product-item-stub>
+  </v-layout>
+</v-container>
+`;

@@ -34,6 +34,7 @@ const auth = {
         });
     },
     userLogin(_, { email, password }) {
+			
       firebase
         .auth()
         .signInWithEmailAndPassword(email, password)

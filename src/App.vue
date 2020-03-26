@@ -19,13 +19,15 @@ export default {
 		Alert
 	},
 	methods: {
-      ...mapActions([ 'updateProductList'])
+      ...mapActions([ 'updateProductList', 'retrieveShoppingCart'])
 		},
 		created(){
 			this.updateProductList()
-			//let uid = this.$store.getters.currentUser.uid;
+			let uid = this.$store.getters.currentUser.uid;
+			if (uid) {
+			this.retrieveShoppingCart({uid, currentCart: this.$store.getters.itemList})
 
-			//this.retrieveShoppingCart({uid, currentCart: this.$store.getters.itemList})
+			}
 		}
 };
 </script>

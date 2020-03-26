@@ -1,15 +1,16 @@
 <template>
   <div>
+		<div class="d-flex justify-center" >
     <v-alert
-      v-model="alert"
+		:value="showMessageBar"
       dismissible
-      :color="messageColor"
+      :type="messageColor"
       border="left"
       elevation="2"
-      colored-border
-      dense
+			dense
       icon="mdi-firework"
     >{{currentMessage}}</v-alert>
+		</div>
   </div>
 </template>
 <script>
@@ -17,7 +18,8 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
   data() {
     return {
-      alert: true
+			alert: true, 
+			dismiss:true
     };
   },
   computed: {
@@ -28,7 +30,12 @@ export default {
 
     currentMessage() {
       return this.getMessage.message;
-    }
+		},
+		
+		showMessageBar() {
+			console.log(this.getMessage.message.length > 0)
+      return this.getMessage.message.length > 0;
+    },
   },
   methods: {
     ...mapActions(['clearMessage']),

@@ -56,7 +56,7 @@ const products = {
     products(state) {
       return state.productList;
     },
-    isproductLoading(state) {
+    isProductLoading(state) {
       return state.isLoading;
     }
   },
@@ -67,9 +67,9 @@ const products = {
     }
   },
   actions: {
-    updateProductList(context) {
+    updateProductList({commit}) {
 			ref.child("products").on('value', function(snapshot) {
-				context.commit('updateProductList', snapshot.val());
+				commit('updateProductList', snapshot.val());
       });
       
     }

@@ -42,7 +42,7 @@ const cart = {
         .once('value')
         .then(snapshot => {
           if (snapshot.val() && (!currentCart || currentCart.length == 0)) {
-            commit('setCart', cart.val());
+            commit('setCart', snapshot.val());
           }
         });
     }
